@@ -388,24 +388,6 @@
     color:rgba(255,255,255,.72);
   }
   @media (max-width:560px){.wrap{padding:0 16px}}
-
-  /* ---- スマホ下部の固定ボタン ---- */
-  .sp-bar{display:none}
-  @media (max-width:720px){
-    .sp-bar{
-      display:grid;grid-template-columns:repeat(3,1fr);
-      position:fixed;left:0;right:0;bottom:0;z-index:60;
-      background:var(--green);
-      padding-bottom:env(safe-area-inset-bottom);
-    }
-    .sp-bar a{
-      text-align:center;color:#fff;text-decoration:none;
-      font-family:"Jost",sans-serif;font-size:11px;font-weight:500;letter-spacing:.16em;
-      padding:15px 0 14px;
-    }
-    .sp-bar a + a{border-left:1px solid rgba(255,255,255,.2)}
-    footer{padding-bottom:calc(52px + 48px + env(safe-area-inset-bottom))}
-  }
 </style>
 </head>
 <body>
@@ -896,12 +878,6 @@
   </div>
 </section>
 <!-- ===== ここまで ===== -->
-
-<nav class="sp-bar" aria-label="ショートカット">
-  <a href="#menu">MENU</a>
-  <a href="#order">ORDER</a>
-  <a href="#shop">ACCESS</a>
-</nav>
 
 <footer>
   <img src="/assets/logo-v-white.png" alt="TOKYO TEA CLUB">
