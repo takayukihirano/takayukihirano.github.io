@@ -3,18 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TOKYO TEA CLUB｜JAPANESE NEW STYLE TEA｜2026年11月、浅草にオープン</title>
-<meta name="description" content="TOKYO TEA CLUB（トウキョウティークラブ）は、JAPANESE NEW STYLE TEA を掲げる日本茶ドリンクスタンドです。2026年11月、東京・浅草にオープン予定。運営：株式会社眩光。">
+<title>TOKYO TEA CLUB｜浅草の日本茶ドリンクスタンド｜2026年11月7日オープン</title>
+<meta name="description" content="TOKYO TEA CLUB（トウキョウティークラブ）は、浅草の日本茶ドリンクスタンドです。ほうじ茶・緑茶・玄米茶・和紅茶・抹茶のミルクティーやラテ、黒糖、フルーツティーまで。サイズ・甘さ・氷・トッピングを選べます。2026年11月7日オープン予定。">
 <meta property="og:title" content="TOKYO TEA CLUB｜JAPANESE NEW STYLE TEA">
-<meta property="og:description" content="日本のお茶を、もっと自由に。日本茶の新しいスタイルをつくるドリンクスタンド。2026年11月、東京・浅草にオープン予定。">
+<meta property="og:description" content="日本のお茶を、もっと自由に。浅草の日本茶ドリンクスタンド。2026年11月7日オープン予定。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tokyoteaclub.jp/">
+<meta property="og:image" content="https://tokyoteaclub.jp/assets/hero.webp">
 <meta property="og:site_name" content="TOKYO TEA CLUB">
 <link rel="icon" type="image/png" href="/logo-mark.png">
 <link rel="apple-touch-icon" href="/logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "TOKYO TEA CLUB 浅草店",
+  "url": "https://tokyoteaclub.jp/",
+  "image": "https://tokyoteaclub.jp/assets/storefront.webp",
+  "servesCuisine": "日本茶ドリンク",
+  "hasMenu": "https://tokyoteaclub.jp/#menu",
+  "priceRange": "¥300〜¥850",
+  "address": {
+    "@type": "PostalAddress",
+    "postalCode": "111-0032",
+    "addressRegion": "東京都",
+    "addressLocality": "台東区",
+    "streetAddress": "浅草2-1-5 1階",
+    "addressCountry": "JP"
+  }
+}
+</script>
+<script>
+  // 言語: 保存した選択 → なければブラウザの言語（日本語以外は英語）
+  (function(){
+    var l;
+    try{ l = localStorage.getItem('ttc-lang'); }catch(e){}
+    if(!l) l = (navigator.language||'ja').toLowerCase().indexOf('ja')===0 ? 'ja' : 'en';
+    document.documentElement.setAttribute('data-lang', l);
+    if(l==='en') document.documentElement.lang = 'en';
+  })();
+</script>
 <style>
   :root{
     --ink:#1F2B26;
@@ -24,6 +55,10 @@
     --white:#FFFFFF;
     --paper:#F8F7F4;
     --line:#E4E1DA;
+    --photo:#ECE9E4;
+    --gold:#C08A3E;
+    --iced:#4F8D9B;
+    --hot:#B4643F;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -34,10 +69,16 @@
     font-weight:400;line-height:1.9;letter-spacing:.02em;
     -webkit-font-smoothing:antialiased;
   }
-  img{display:block;max-width:100%}
+  img{display:block;max-width:100%;height:auto}
   a{color:inherit}
-  section{scroll-margin-top:70px}
+  ul{list-style:none}
+  section,.cat{scroll-margin-top:118px}
+  #about,#order,#shop{scroll-margin-top:60px}
   .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+
+  /* ---- 日本語 / English ---- */
+  html:not([data-lang="en"]) .en{display:none}
+  html[data-lang="en"] .ja{display:none}
 
   .eyebrow{
     font-family:"Jost",sans-serif;font-size:12px;font-weight:500;
@@ -54,15 +95,13 @@
     transition:background .25s,color .25s;
   }
   .btn:hover{background:var(--green);color:#fff}
-  .btn.solid{background:var(--green);color:#fff}
-  .btn.solid:hover{background:var(--green-deep);border-color:var(--green-deep)}
   .btn.ghost{color:#fff;border-color:rgba(255,255,255,.85)}
   .btn.ghost:hover{background:#fff;color:var(--green)}
 
   /* ---- nav ---- */
   .nav{
     position:fixed;top:0;left:0;right:0;z-index:50;
-    background:rgba(255,255,255,.9);
+    background:rgba(255,255,255,.92);
     backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(0,0,0,.05);
   }
@@ -71,19 +110,20 @@
     height:60px;display:flex;align-items:center;justify-content:space-between;
   }
   .nav-logo img{height:20px;width:auto}
-  .nav-links{display:flex;gap:30px;list-style:none;align-items:center}
-  .nav-links a{
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a,.lang{
     font-family:"Jost",sans-serif;font-size:11.5px;font-weight:500;
     letter-spacing:.2em;color:var(--ink);text-decoration:none;
   }
   .nav-links a:hover{color:var(--soft)}
-  .nav-links .pill{
-    color:#fff;background:var(--green);
-    padding:9px 20px;border-radius:999px;
+  .lang{
+    background:none;border:1px solid var(--line);border-radius:999px;
+    padding:6px 14px;cursor:pointer;letter-spacing:.14em;
   }
-  .nav-links .pill:hover{background:var(--green-deep);color:#fff}
+  .lang:hover{border-color:var(--green);color:var(--green)}
   @media (max-width:720px){
-    .nav-links{gap:16px}
+    .nav-in{padding:0 16px}
+    .nav-links{gap:14px}
     .nav-links li.hide-sp{display:none}
   }
 
@@ -101,7 +141,7 @@
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;color:#fff;padding:0 24px;
   }
-  .hero-inner img{width:min(420px,72vw);height:auto;filter:drop-shadow(0 2px 18px rgba(0,0,0,.25))}
+  .hero-inner > img{width:min(420px,72vw);height:auto;filter:drop-shadow(0 2px 18px rgba(0,0,0,.25))}
   .hero-tag{
     margin-top:30px;
     font-family:"Noto Sans JP",sans-serif;font-weight:400;
@@ -114,6 +154,7 @@
     letter-spacing:.3em;text-indent:.3em;color:rgba(255,255,255,.92);
     text-shadow:0 1px 12px rgba(0,0,0,.35);
   }
+  .hero-inner .btn{margin-top:34px}
   .hero-scroll{
     position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
     color:#fff;font-family:"Jost",sans-serif;font-size:10px;letter-spacing:.3em;text-indent:.3em;
@@ -138,8 +179,8 @@
   .intro-copy p + p{margin-top:1.3em}
   .intro-open{
     margin-top:2em;
-    font-family:"Jost",sans-serif;font-size:13px;font-weight:500;
-    letter-spacing:.26em;color:var(--green);
+    font-family:"Jost","Noto Sans JP",sans-serif;font-size:13px;font-weight:500;
+    letter-spacing:.2em;color:var(--green);
   }
   @media (max-width:820px){.intro-grid{grid-template-columns:1fr}}
 
@@ -156,39 +197,135 @@
     position:absolute;left:0;right:0;bottom:26px;z-index:2;
     text-align:center;color:#fff;
   }
-  .panel-label .en{font-family:"Jost",sans-serif;font-size:15px;font-weight:500;letter-spacing:.3em;text-indent:.3em}
-  .panel-label .jp{font-family:"Noto Sans JP",sans-serif;font-size:12px;font-weight:300;letter-spacing:.14em;margin-top:4px;opacity:.9}
+  .panel-label .t{font-family:"Jost",sans-serif;font-size:15px;font-weight:500;letter-spacing:.3em;text-indent:.3em}
+  .panel-label .s{font-family:"Noto Sans JP",sans-serif;font-size:12px;font-weight:300;letter-spacing:.14em;margin-top:4px;opacity:.9}
   @media (max-width:720px){
     .panels{grid-template-columns:1fr;gap:6px}
     .panel img{height:52vw;min-height:240px}
   }
 
-  /* ---- menu ---- */
-  .menu-sec{padding:clamp(84px,12vw,150px) 0}
+  /* ---- section head ---- */
   .sec-head{text-align:center;margin-bottom:clamp(40px,6vw,64px)}
-  .sec-head .en{
+  .sec-head .t{
     font-family:"Jost",sans-serif;font-weight:400;
     font-size:clamp(26px,3.4vw,40px);letter-spacing:.22em;text-indent:.22em;
   }
-  .sec-head .jp{
+  .sec-head .s{
     margin-top:10px;
     font-family:"Noto Sans JP",sans-serif;font-size:13px;font-weight:300;
     letter-spacing:.14em;color:var(--soft);
   }
-  .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
-  .card{text-align:center}
-  .card .ph{overflow:hidden;border-radius:2px}
-  .card img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .7s ease}
-  .card:hover img{transform:scale(1.05)}
-  .card-name{margin-top:14px;font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:400;letter-spacing:.06em}
-  .card-en{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:.2em;color:var(--soft);margin-top:3px}
-  @media (max-width:960px){.cards{grid-template-columns:repeat(3,1fr)}}
-  @media (max-width:640px){.cards{grid-template-columns:repeat(2,1fr);gap:14px}}
-  .menu-note{
-    margin-top:40px;text-align:center;
-    font-size:13.5px;color:var(--soft);
-    font-family:"Noto Sans JP",sans-serif;font-weight:400;letter-spacing:.06em;
+
+  /* ---- menu ---- */
+  .menu-sec{padding:clamp(84px,12vw,140px) 0 clamp(64px,9vw,110px)}
+  .cat-nav{
+    position:sticky;top:60px;z-index:40;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    margin-bottom:clamp(36px,5vw,56px);
   }
+  .cat-nav-in{
+    display:flex;gap:8px;justify-content:center;
+    padding:12px 0;overflow-x:auto;scrollbar-width:none;
+  }
+  .cat-nav-in::-webkit-scrollbar{display:none}
+  .cat-nav a{
+    flex:none;
+    font-family:"Noto Sans JP","Jost",sans-serif;font-size:12.5px;font-weight:400;
+    letter-spacing:.08em;text-decoration:none;color:var(--ink);
+    border:1px solid var(--line);border-radius:999px;padding:7px 16px;
+    transition:border-color .2s,color .2s,background .2s;
+  }
+  .cat-nav a:hover{border-color:var(--green);color:var(--green)}
+  .cat-nav a.on{background:var(--green);border-color:var(--green);color:#fff}
+  @media (max-width:960px){.cat-nav-in{justify-content:flex-start;padding:12px 16px}}
+
+  .cat + .cat{margin-top:clamp(56px,7vw,88px)}
+  .cat-head{
+    display:grid;grid-template-columns:auto 1fr;align-items:baseline;column-gap:20px;
+    border-bottom:1px solid var(--green);padding-bottom:12px;margin-bottom:24px;
+  }
+  .eyebrow-l{
+    grid-column:1/-1;
+    font-family:"Jost",sans-serif;font-size:11px;font-weight:500;
+    letter-spacing:.26em;color:var(--gold);
+  }
+  .cat-head h3{font-family:"Noto Sans JP","Jost",sans-serif;font-size:22px;font-weight:500;letter-spacing:.08em}
+  .cat-head p{font-size:13px;color:var(--soft);letter-spacing:.04em}
+  @media (max-width:560px){
+    .cat-head{grid-template-columns:1fr}
+    .cat-head p{margin-top:2px}
+  }
+
+  .items{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 22px}
+  @media (max-width:960px){.items{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:640px){.items{grid-template-columns:repeat(2,1fr);gap:24px 14px}}
+  .item .ph{background:var(--photo);border-radius:4px;overflow:hidden}
+  .item .ph img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .7s ease}
+  .item:hover .ph img{transform:scale(1.04)}
+  .tags{display:flex;gap:5px;margin-top:12px;min-height:19px}
+  .tag{
+    font-family:"Jost",sans-serif;font-size:9.5px;font-weight:500;letter-spacing:.14em;
+    line-height:1;padding:4px 7px;border-radius:3px;border:1px solid currentColor;
+  }
+  .tag.iced{color:var(--iced)}
+  .tag.hot{color:var(--hot)}
+  .item h4{
+    margin-top:8px;
+    font-family:"Noto Sans JP","Jost",sans-serif;font-size:15px;font-weight:500;
+    line-height:1.5;letter-spacing:.04em;
+  }
+  .item .sub{
+    font-family:"Jost","Noto Sans JP",sans-serif;font-size:11px;color:var(--soft);
+    letter-spacing:.06em;line-height:1.5;margin-top:2px;
+  }
+  .prices{display:flex;gap:16px;margin-top:8px;font-family:"Jost",sans-serif;font-size:15px;font-weight:500}
+  .prices i{
+    font-style:normal;font-size:10.5px;font-weight:500;letter-spacing:.1em;
+    color:var(--soft);margin-right:5px;
+  }
+  .menu-note{
+    margin-top:clamp(48px,6vw,72px);text-align:center;
+    font-size:13px;color:var(--soft);letter-spacing:.06em;
+  }
+
+  /* ---- how to order ---- */
+  .order{background:var(--green);color:#fff;padding:clamp(80px,11vw,130px) 0}
+  .order .sec-head .s{color:rgba(255,255,255,.75)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  @media (max-width:1100px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.steps{grid-template-columns:1fr}}
+  .step{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:6px;padding:24px 20px 22px;
+  }
+  .step-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px}
+  .step-num{font-family:"Jost",sans-serif;font-size:26px;font-weight:500;color:var(--gold);line-height:1}
+  .step-t{font-family:"Noto Sans JP",sans-serif;font-size:16px;font-weight:500;letter-spacing:.06em}
+  .step-t small{font-family:"Jost",sans-serif;font-size:10px;letter-spacing:.2em;opacity:.7;margin-left:8px}
+  .opts{display:grid;gap:8px;margin-top:18px}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opts.c4{grid-template-columns:repeat(4,1fr)}
+  .opts.c2{grid-template-columns:repeat(2,1fr)}
+  .opt{
+    background:#fff;color:var(--ink);border-radius:4px;
+    text-align:center;padding:12px 4px 10px;
+  }
+  .opt svg{display:block;margin:0 auto 6px}
+  .opt b{display:block;font-family:"Noto Sans JP","Jost",sans-serif;font-size:12.5px;font-weight:500;line-height:1.4}
+  .opt span.v{display:block;font-family:"Jost",sans-serif;font-size:10px;color:var(--soft);letter-spacing:.08em}
+  .opt.hot{box-shadow:inset 0 0 0 1.5px var(--hot)}
+  .opt.ice{box-shadow:inset 0 0 0 1.5px var(--iced)}
+  .topping{background:#fff;color:var(--ink);border-radius:4px;overflow:hidden;text-align:center}
+  .topping img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .topping b{display:block;font-family:"Noto Sans JP","Jost",sans-serif;font-size:12px;font-weight:500;padding:6px 2px 7px;line-height:1.3}
+  .badge{
+    display:inline-block;margin-left:auto;align-self:center;
+    background:var(--gold);color:#fff;border-radius:3px;
+    font-family:"Jost","Noto Sans JP",sans-serif;font-size:11.5px;font-weight:500;padding:2px 8px;
+  }
+  .step-note{margin-top:12px;font-size:11.5px;line-height:1.7;color:rgba(255,255,255,.78)}
 
   /* ---- store ---- */
   .store{background:var(--paper);padding:clamp(72px,10vw,120px) 28px 0}
@@ -199,15 +336,21 @@
     font-family:"Noto Sans JP",sans-serif;font-weight:300;letter-spacing:.08em;
   }
   .shopinfo{background:var(--paper);padding:clamp(56px,8vw,96px) 0 clamp(72px,10vw,120px)}
-  dl.spec{display:grid;grid-template-columns:9em 1fr;gap:15px 0;font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:400;max-width:680px;margin:0 auto}
-  dl.spec dt{color:var(--soft);font-size:13px;letter-spacing:.06em}
+  .shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);align-items:start}
+  @media (max-width:860px){.shop-grid{grid-template-columns:1fr}}
+  dl.spec{display:grid;grid-template-columns:8.5em 1fr;gap:15px 0;font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:400}
+  dl.spec dt{color:var(--soft);font-size:13px;letter-spacing:.06em;padding-top:2px}
   @media (max-width:560px){
     dl.spec{grid-template-columns:1fr;gap:4px 0}
     dl.spec dt{margin-top:14px}
   }
+  .map{border-radius:4px;overflow:hidden;background:var(--line)}
+  .map iframe{display:block;width:100%;height:360px;border:0}
+  .map-link{margin-top:16px}
 
   /* ---- follow ---- */
-  .follow{background:var(--paper);padding:clamp(72px,10vw,110px) 0;text-align:center}
+  .follow{background:var(--paper);padding:0 0 clamp(72px,10vw,110px);text-align:center}
+  .follow-in{border-top:1px solid var(--line);padding-top:clamp(64px,9vw,96px)}
   .sns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
   .sns a{
     display:inline-block;
@@ -222,6 +365,12 @@
 
   /* ---- company / footer ---- */
   .company{padding:clamp(64px,9vw,100px) 0;border-top:1px solid var(--line)}
+  /* 会社ブロックは改変禁止のため、見出しの class="en" を言語切替の対象から外す */
+  .company .sec-head .en{
+    display:block;
+    font-family:"Jost",sans-serif;font-weight:400;
+    font-size:clamp(26px,3.4vw,40px);letter-spacing:.22em;text-indent:.22em;
+  }
   .company dl{display:grid;grid-template-columns:9em 1fr;gap:14px 0;font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:400;max-width:680px;margin:28px auto 0}
   .company dt{color:var(--soft);font-size:13px;letter-spacing:.06em}
   @media (max-width:560px){
@@ -238,6 +387,25 @@
     font-size:10.5px;letter-spacing:.24em;text-indent:.24em;
     color:rgba(255,255,255,.72);
   }
+  @media (max-width:560px){.wrap{padding:0 16px}}
+
+  /* ---- スマホ下部の固定ボタン ---- */
+  .sp-bar{display:none}
+  @media (max-width:720px){
+    .sp-bar{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      position:fixed;left:0;right:0;bottom:0;z-index:60;
+      background:var(--green);
+      padding-bottom:env(safe-area-inset-bottom);
+    }
+    .sp-bar a{
+      text-align:center;color:#fff;text-decoration:none;
+      font-family:"Jost",sans-serif;font-size:11px;font-weight:500;letter-spacing:.16em;
+      padding:15px 0 14px;
+    }
+    .sp-bar a + a{border-left:1px solid rgba(255,255,255,.2)}
+    footer{padding-bottom:calc(52px + 48px + env(safe-area-inset-bottom))}
+  }
 </style>
 </head>
 <body>
@@ -250,7 +418,9 @@
     <ul class="nav-links">
       <li class="hide-sp"><a href="#about">ABOUT</a></li>
       <li><a href="#menu">MENU</a></li>
-      <li class="hide-sp"><a href="#shop">SHOP</a></li>
+      <li class="hide-sp"><a href="#order">HOW TO ORDER</a></li>
+      <li><a href="#shop">SHOP</a></li>
+      <li><button class="lang" type="button" aria-label="言語を切り替える / Switch language"><span class="ja">EN</span><span class="en">日本語</span></button></li>
     </ul>
   </div>
 </nav>
@@ -259,8 +429,9 @@
   <img src="/assets/hero.webp" alt="浅草の街と抹茶ラテ" fetchpriority="high">
   <div class="hero-inner">
     <img src="/assets/logo-h-white.png" alt="TOKYO TEA CLUB">
-    <div class="hero-tag">日本のお茶を、もっと自由に。</div>
-    <div class="hero-open">2026.11&nbsp;OPEN&nbsp;/&nbsp;ASAKUSA,&nbsp;TOKYO</div>
+    <div class="hero-tag"><span class="ja">日本のお茶を、もっと自由に。</span><span class="en">JAPANESE TEA, SET FREE.</span></div>
+    <div class="hero-open">2026.11.7&nbsp;SAT&nbsp;OPEN&nbsp;/&nbsp;ASAKUSA,&nbsp;TOKYO</div>
+    <a class="btn ghost" href="#menu">VIEW MENU</a>
   </div>
   <div class="hero-scroll">SCROLL</div>
 </header>
@@ -270,9 +441,11 @@
     <div class="intro-grid">
       <h1 class="display">JAPANESE<br><span>NEW STYLE</span><br>TEA</h1>
       <div class="intro-copy">
-        <p>抹茶、ほうじ茶、和紅茶、煎茶。日本にずっとあったお茶を、作法や決まりごとから解き放って、いまの東京の速さに合う一杯に。</p>
-        <p>茶葉から丁寧に抽出した日本茶をベースに、ミルクティーやラテ、フルーツティーまで。日本茶の奥行きを、手に取りやすいスタイルに再編集します。</p>
-        <div class="intro-open">2026.11 — 浅草にオープン</div>
+        <p class="ja">抹茶、ほうじ茶、和紅茶、緑茶。日本にずっとあったお茶を、作法や決まりごとから解き放って、いまの東京の速さに合う一杯に。</p>
+        <p class="ja">茶葉から淹れた日本茶をベースに、ミルクティーやラテ、フルーツティーまで。サイズも甘さも氷も、好きなように選べます。日本茶の奥行きを、手に取りやすいスタイルに再編集します。</p>
+        <p class="en">Matcha, hojicha, Japanese black tea, green tea. We take the teas Japan has always had, free them from etiquette and rules, and turn them into a cup that keeps pace with Tokyo today.</p>
+        <p class="en">Starting from Japanese tea brewed from the leaf, we make milk teas, lattes and fruit teas. Choose your size, sweetness and ice. The depth of Japanese tea, re-edited into a style that is easy to pick up.</p>
+        <div class="intro-open"><span class="ja">2026年11月7日（土）浅草にオープン</span><span class="en">OPENING NOV 7, 2026 — ASAKUSA</span></div>
       </div>
     </div>
   </div>
@@ -280,86 +453,428 @@
 
 <div class="panels">
   <div class="panel">
-    <img src="/assets/life-whisk.webp" alt="抹茶を点てる" loading="lazy">
-    <div class="panel-label"><div class="en">MATCHA</div><div class="jp">一杯ずつ、点てる</div></div>
+    <img src="/assets/life-whisk.webp" alt="抹茶" loading="lazy">
+    <div class="panel-label"><div class="t">MATCHA</div><div class="s"><span class="ja">抹茶を、作法から自由に</span><span class="en">Free from ceremony</span></div></div>
   </div>
   <div class="panel">
     <img src="/assets/kokuto.webp" alt="黒糖ミルク" loading="lazy">
-    <div class="panel-label"><div class="en">SIGNATURE</div><div class="jp">黒糖ミルク、タピオカ</div></div>
+    <div class="panel-label"><div class="t">KOKUTOU</div><div class="s"><span class="ja">黒糖のコクを重ねて</span><span class="en">Layered with brown sugar</span></div></div>
   </div>
   <div class="panel">
     <img src="/assets/life-cheers.webp" alt="ほうじ茶ミルクティーで乾杯" loading="lazy">
-    <div class="panel-label"><div class="en">TEA TIME</div><div class="jp">店内でも、テイクアウトでも</div></div>
+    <div class="panel-label"><div class="t">TEA TIME</div><div class="s"><span class="ja">店内でも、テイクアウトでも</span><span class="en">For here or to go</span></div></div>
   </div>
 </div>
 
 <section class="menu-sec" id="menu">
   <div class="wrap">
     <div class="sec-head">
-      <div class="en">MENU</div>
-      <div class="jp">日本茶ドリンクのラインナップ</div>
+      <div class="t">MENU</div>
+      <div class="s"><span class="ja">表示価格はすべて税込です</span><span class="en">All prices include tax</span></div>
     </div>
-    <div class="cards">
-      <div class="card">
-        <div class="ph"><img src="/assets/matcha.webp" alt="抹茶ラテ" loading="lazy"></div>
-        <div class="card-name">抹茶ラテ</div>
-        <div class="card-en">MATCHA LATTE</div>
+<!--MENU:start-->
+    <nav class="cat-nav" aria-label="メニューのカテゴリ">
+      <div class="cat-nav-in">
+      <a href="#m-straight"><span class="ja">ストレートティー</span><span class="en">STRAIGHT TEA</span></a>
+      <a href="#m-milktea"><span class="ja">ミルクティー</span><span class="en">MILK TEA</span></a>
+      <a href="#m-matcha"><span class="ja">抹茶</span><span class="en">MATCHA</span></a>
+      <a href="#m-kokuto"><span class="ja">黒糖</span><span class="en">KOKUTOU</span></a>
+      <a href="#m-fruit"><span class="ja">フルーツティー</span><span class="en">FRUIT TEA</span></a>
+      <a href="#m-ade"><span class="ja">エイド</span><span class="en">ADE</span></a>
+      <a href="#m-others"><span class="ja">その他</span><span class="en">OTHERS</span></a>
+      <a href="#m-food"><span class="ja">お茶菓子</span><span class="en">FOOD</span></a>
       </div>
-      <div class="card">
-        <div class="ph"><img src="/assets/kokuto.webp" alt="黒糖ミルク" loading="lazy"></div>
-        <div class="card-name">黒糖ミルク</div>
-        <div class="card-en">KOKUTO MILK</div>
+    </nav>
+
+    <div class="cat" id="m-straight">
+      <div class="cat-head">
+        <div class="eyebrow-l">STRAIGHT TEA</div>
+        <h3><span class="ja">ストレートティー</span><span class="en">Straight Tea</span></h3>
+        <p><span class="ja">茶葉から淹れた日本茶を、そのまま。</span><span class="en">Japanese tea brewed from the leaf, served straight.</span></p>
       </div>
-      <div class="card">
-        <div class="ph"><img src="/assets/milktea.webp" alt="ほうじ茶ミルクティー" loading="lazy"></div>
-        <div class="card-name">ほうじ茶ミルクティー</div>
-        <div class="card-en">HOJICHA MILK TEA</div>
-      </div>
-      <div class="card">
-        <div class="ph"><img src="/assets/straight.webp" alt="ストレートティー" loading="lazy"></div>
-        <div class="card-name">ストレートティー</div>
-        <div class="card-en">STRAIGHT TEA</div>
-      </div>
-      <div class="card">
-        <div class="ph"><img src="/assets/genmai.webp" alt="玄米茶" loading="lazy"></div>
-        <div class="card-name">玄米茶</div>
-        <div class="card-en">GENMAICHA</div>
-      </div>
+      <ul class="items">
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/hojicha.webp" alt="ほうじ茶" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">ほうじ茶</span><span class="en">Hojicha</span></h4>
+          <div class="sub"><span class="ja">Hojicha</span><span class="en">ほうじ茶</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥400</span><span class="p"><i>L</i>¥500</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/greentea.webp" alt="緑茶" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">緑茶</span><span class="en">Green Tea</span></h4>
+          <div class="sub"><span class="ja">Green Tea</span><span class="en">緑茶</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥400</span><span class="p"><i>L</i>¥500</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/genmaicha.webp" alt="玄米茶" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">玄米茶</span><span class="en">Genmaicha</span></h4>
+          <div class="sub"><span class="ja">Genmaicha</span><span class="en">玄米茶</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥400</span><span class="p"><i>L</i>¥500</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/wakocha.webp" alt="和紅茶" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">和紅茶</span><span class="en">Japanese Black Tea</span></h4>
+          <div class="sub"><span class="ja">Japanese Black Tea</span><span class="en">和紅茶</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥450</span><span class="p"><i>L</i>¥550</span></div>
+        </li>
+      </ul>
     </div>
-    <p class="menu-note">和紅茶ミルクティー、煎茶ラテ、フルーツティー、季節限定ドリンクもご用意します。メニューと価格は開店時に確定します。</p>
+
+    <div class="cat" id="m-milktea">
+      <div class="cat-head">
+        <div class="eyebrow-l">MILK TEA</div>
+        <h3><span class="ja">ミルクティー</span><span class="en">Milk Tea</span></h3>
+        <p><span class="ja">淹れたお茶にミルクを合わせた、毎日の一杯。</span><span class="en">Brewed Japanese tea with milk. An everyday cup.</span></p>
+      </div>
+      <ul class="items">
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/hojicha-mt.webp" alt="ほうじ茶ミルクティー" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">ほうじ茶ミルクティー</span><span class="en">Hojicha Milk Tea</span></h4>
+          <div class="sub"><span class="ja">Hojicha Milk Tea</span><span class="en">ほうじ茶ミルクティー</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥600</span><span class="p"><i>L</i>¥700</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/greentea-mt.webp" alt="緑茶ミルクティー" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">緑茶ミルクティー</span><span class="en">Green Tea Milk Tea</span></h4>
+          <div class="sub"><span class="ja">Green Tea Milk Tea</span><span class="en">緑茶ミルクティー</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥600</span><span class="p"><i>L</i>¥700</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/genmaicha-mt.webp" alt="玄米茶ミルクティー" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">玄米茶ミルクティー</span><span class="en">Genmaicha Milk Tea</span></h4>
+          <div class="sub"><span class="ja">Genmaicha Milk Tea</span><span class="en">玄米茶ミルクティー</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥600</span><span class="p"><i>L</i>¥700</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/wakocha-mt.webp" alt="和紅茶ミルクティー" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">和紅茶ミルクティー</span><span class="en">Japanese Black Tea Milk Tea</span></h4>
+          <div class="sub"><span class="ja">Japanese Black Tea Milk Tea</span><span class="en">和紅茶ミルクティー</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cat" id="m-matcha">
+      <div class="cat-head">
+        <div class="eyebrow-l">MATCHA</div>
+        <h3><span class="ja">抹茶</span><span class="en">Matcha</span></h3>
+        <p><span class="ja">抹茶を、作法から自由に。</span><span class="en">Matcha, free from ceremony.</span></p>
+      </div>
+      <ul class="items">
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/matcha.webp" alt="抹茶ストレート" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">抹茶ストレート</span><span class="en">Matcha Straight</span></h4>
+          <div class="sub"><span class="ja">Matcha Straight</span><span class="en">抹茶ストレート</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥450</span><span class="p"><i>L</i>¥550</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/matcha-latte.webp" alt="抹茶ラテ" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">抹茶ラテ</span><span class="en">Matcha Latte</span></h4>
+          <div class="sub"><span class="ja">Matcha Latte</span><span class="en">抹茶ラテ</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/kokuto-matcha.webp" alt="黒糖抹茶ラテ" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">黒糖抹茶ラテ</span><span class="en">Brown Sugar Matcha Latte</span></h4>
+          <div class="sub"><span class="ja">Brown Sugar Matcha Latte</span><span class="en">黒糖抹茶ラテ</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥750</span><span class="p"><i>L</i>¥850</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/strawberry-matcha.webp" alt="ストロベリー抹茶ラテ" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">ストロベリー抹茶ラテ</span><span class="en">Strawberry Matcha Latte</span></h4>
+          <div class="sub"><span class="ja">Strawberry Matcha Latte</span><span class="en">ストロベリー抹茶ラテ</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥750</span><span class="p"><i>L</i>¥850</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cat" id="m-kokuto">
+      <div class="cat-head">
+        <div class="eyebrow-l">KOKUTOU</div>
+        <h3><span class="ja">黒糖</span><span class="en">Brown Sugar</span></h3>
+        <p><span class="ja">黒糖のコクを重ねた、シグネチャー。</span><span class="en">Our signatures, layered with rich brown sugar.</span></p>
+      </div>
+      <ul class="items">
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/kokuto-hojicha.webp" alt="黒糖ほうじ茶ミルクティー" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">黒糖ほうじ茶ミルクティー</span><span class="en">Brown Sugar Hojicha Milk Tea</span></h4>
+          <div class="sub"><span class="ja">Brown Sugar Hojicha Milk Tea</span><span class="en">黒糖ほうじ茶ミルクティー</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/kokuto-wakocha.webp" alt="黒糖和紅茶ミルクティー" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">黒糖和紅茶ミルクティー</span><span class="en">Brown Sugar Japanese Black Tea Milk Tea</span></h4>
+          <div class="sub"><span class="ja">Brown Sugar Japanese Black Tea Milk Tea</span><span class="en">黒糖和紅茶ミルクティー</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥700</span><span class="p"><i>L</i>¥800</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/kokuto-matcha.webp" alt="黒糖抹茶ラテ" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">黒糖抹茶ラテ</span><span class="en">Brown Sugar Matcha Latte</span></h4>
+          <div class="sub"><span class="ja">Brown Sugar Matcha Latte</span><span class="en">黒糖抹茶ラテ</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥750</span><span class="p"><i>L</i>¥850</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/kokuto-milk.webp" alt="黒糖ミルク" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">黒糖ミルク</span><span class="en">Brown Sugar Milk</span></h4>
+          <div class="sub"><span class="ja">Brown Sugar Milk</span><span class="en">黒糖ミルク</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥550</span><span class="p"><i>L</i>¥650</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cat" id="m-fruit">
+      <div class="cat-head">
+        <div class="eyebrow-l">FRUIT TEA</div>
+        <h3><span class="ja">フルーツティー</span><span class="en">Fruit Tea</span></h3>
+        <p><span class="ja">日本茶と、フルーツ。ICEDのみ。</span><span class="en">Japanese tea meets fruit. Iced only.</span></p>
+      </div>
+      <ul class="items">
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/strawberry-hojicha.webp" alt="ストロベリーほうじ茶" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span></div>
+          <h4><span class="ja">ストロベリーほうじ茶</span><span class="en">Strawberry Hojicha</span></h4>
+          <div class="sub"><span class="ja">Strawberry Hojicha</span><span class="en">ストロベリーほうじ茶</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/peach-wakocha.webp" alt="ピーチ和紅茶" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span></div>
+          <h4><span class="ja">ピーチ和紅茶</span><span class="en">Peach Japanese Black Tea</span></h4>
+          <div class="sub"><span class="ja">Peach Japanese Black Tea</span><span class="en">ピーチ和紅茶</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/mango-greentea.webp" alt="マンゴー緑茶" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span></div>
+          <h4><span class="ja">マンゴー緑茶</span><span class="en">Mango Green Tea</span></h4>
+          <div class="sub"><span class="ja">Mango Green Tea</span><span class="en">マンゴー緑茶</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cat" id="m-ade">
+      <div class="cat-head">
+        <div class="eyebrow-l">ADE</div>
+        <h3><span class="ja">エイド</span><span class="en">Ade</span></h3>
+        <p><span class="ja">フルーツシロップを炭酸で割ります。ICEDのみ。</span><span class="en">Fruit syrup with sparkling water. Iced only.</span></p>
+      </div>
+      <ul class="items">
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/strawberry-ade.webp" alt="ストロベリーエイド" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span></div>
+          <h4><span class="ja">ストロベリーエイド</span><span class="en">Strawberry Ade</span></h4>
+          <div class="sub"><span class="ja">Strawberry Ade</span><span class="en">ストロベリーエイド</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/peach-ade.webp" alt="ピーチエイド" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span></div>
+          <h4><span class="ja">ピーチエイド</span><span class="en">Peach Ade</span></h4>
+          <div class="sub"><span class="ja">Peach Ade</span><span class="en">ピーチエイド</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/mango-ade.webp" alt="マンゴーエイド" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span></div>
+          <h4><span class="ja">マンゴーエイド</span><span class="en">Mango Ade</span></h4>
+          <div class="sub"><span class="ja">Mango Ade</span><span class="en">マンゴーエイド</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cat" id="m-others">
+      <div class="cat-head">
+        <div class="eyebrow-l">OTHERS</div>
+        <h3><span class="ja">その他</span><span class="en">Others</span></h3>
+        <p><span class="ja">チョコレートや、いちごミルクも。</span><span class="en">Chocolate and strawberry milk, too.</span></p>
+      </div>
+      <ul class="items">
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/hot-chocolate.webp" alt="ホットチョコレート" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">ホットチョコレート</span><span class="en">Hot Chocolate</span></h4>
+          <div class="sub"><span class="ja">Hot Chocolate</span><span class="en">ホットチョコレート</span></div>
+          <div class="prices"><span class="p"><i>HOT</i>¥600</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/hojicha-chocolat.webp" alt="ほうじ茶ショコラ" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">ほうじ茶ショコラ</span><span class="en">Hojicha Chocolat</span></h4>
+          <div class="sub"><span class="ja">Hojicha Chocolat</span><span class="en">ほうじ茶ショコラ</span></div>
+          <div class="prices"><span class="p"><i>HOT</i>¥650</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/strawberry-milk.webp" alt="ストロベリーミルク" width="720" height="720" loading="lazy"></div>
+          <div class="tags"><span class="tag iced">ICED</span><span class="tag hot">HOT</span></div>
+          <h4><span class="ja">ストロベリーミルク</span><span class="en">Strawberry Milk</span></h4>
+          <div class="sub"><span class="ja">Strawberry Milk</span><span class="en">ストロベリーミルク</span></div>
+          <div class="prices"><span class="p"><i>M</i>¥650</span><span class="p"><i>L</i>¥750</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cat" id="m-food">
+      <div class="cat-head">
+        <div class="eyebrow-l">FOOD</div>
+        <h3><span class="ja">お茶菓子</span><span class="en">Tea Sweets</span></h3>
+        <p><span class="ja">個包装のまま、おひとつからどうぞ。</span><span class="en">Individually wrapped. Available by the piece.</span></p>
+      </div>
+      <ul class="items">
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/financier.webp" alt="抹茶フィナンシェ" width="720" height="720" loading="lazy"></div>
+          <div class="tags"></div>
+          <h4><span class="ja">抹茶フィナンシェ</span><span class="en">Matcha Financier</span></h4>
+          <div class="sub"><span class="ja">Matcha Financier</span><span class="en">抹茶フィナンシェ</span></div>
+          <div class="prices"><span class="p">¥300</span></div>
+        </li>
+        <li class="item">
+          <div class="ph"><img src="/assets/menu/cookie.webp" alt="抹茶チョコチップクッキー" width="720" height="720" loading="lazy"></div>
+          <div class="tags"></div>
+          <h4><span class="ja">抹茶チョコチップクッキー</span><span class="en">Matcha Chocolate Chip Cookie</span></h4>
+          <div class="sub"><span class="ja">Matcha Chocolate Chip Cookie</span><span class="en">抹茶チョコチップクッキー</span></div>
+          <div class="prices"><span class="p">¥300</span></div>
+        </li>
+      </ul>
+    </div>
+<!--MENU:end-->
+    <p class="menu-note"><span class="ja">HOTはMサイズのみ（ICED Mと同じ価格）です。写真はイメージです。</span><span class="en">HOT drinks come in size M only, at the ICED M price. Photos are for illustration.</span></p>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">HOW TO ORDER</div>
+      <div class="s"><span class="ja">ドリンクはすべて、サイズ・甘さ・氷の量を選べます</span><span class="en">Choose your size, sweetness and ice for every drink</span></div>
+    </div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-head"><span class="step-num">01</span><span class="step-t"><span class="ja">サイズ</span><span class="en">Size</span><small>SIZE</small></span></div>
+        <div class="opts c3">
+          <div class="opt ice">
+            <svg width="22" height="26" viewBox="0 0 22 26" fill="none" stroke="#4F8D9B" stroke-width="1.6" aria-hidden="true"><path d="M2 5h18l-2.4 19H4.4z"/><path d="M1 5h20"/></svg>
+            <b>ICED M</b><span class="v">500ml</span>
+          </div>
+          <div class="opt ice">
+            <svg width="24" height="30" viewBox="0 0 24 30" fill="none" stroke="#4F8D9B" stroke-width="1.6" aria-hidden="true"><path d="M2 5h20l-2.6 23H4.6z"/><path d="M1 5h22"/></svg>
+            <b>ICED L</b><span class="v">700ml</span>
+          </div>
+          <div class="opt hot">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#B4643F" stroke-width="1.6" aria-hidden="true"><path d="M3 8h15v9a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z"/><path d="M18 11h2a3 3 0 0 1 0 6h-2"/><path d="M8 2v3M12 2v3"/></svg>
+            <b>HOT M</b><span class="v">355ml</span>
+          </div>
+        </div>
+        <p class="step-note"><span class="ja">Lサイズは各＋100円。HOTはMサイズのみで、ICED Mと同じ価格です。</span><span class="en">Size L is +¥100. HOT comes in size M only, at the ICED M price.</span></p>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><span class="step-num">02</span><span class="step-t"><span class="ja">甘さ</span><span class="en">Sweetness</span><small>SWEETNESS</small></span></div>
+        <div class="opts c4">
+          <div class="opt"><svg width="44" height="14" viewBox="0 0 44 14" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2" fill="none" stroke="#C08A3E" stroke-width="1.4"/><rect x="16" y="1" width="12" height="12" rx="2" fill="none" stroke="#C08A3E" stroke-width="1.4"/><rect x="31" y="1" width="12" height="12" rx="2" fill="none" stroke="#C08A3E" stroke-width="1.4"/></svg><b><span class="ja">ゼロ</span><span class="en">None</span></b><span class="v"><span class="ja">None</span><span class="en">ゼロ</span></span></div>
+          <div class="opt"><svg width="44" height="14" viewBox="0 0 44 14" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2" fill="#C08A3E" stroke="#C08A3E" stroke-width="1.4"/><rect x="16" y="1" width="12" height="12" rx="2" fill="none" stroke="#C08A3E" stroke-width="1.4"/><rect x="31" y="1" width="12" height="12" rx="2" fill="none" stroke="#C08A3E" stroke-width="1.4"/></svg><b><span class="ja">少なめ</span><span class="en">Less</span></b><span class="v"><span class="ja">Less</span><span class="en">少なめ</span></span></div>
+          <div class="opt"><svg width="44" height="14" viewBox="0 0 44 14" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2" fill="#C08A3E" stroke="#C08A3E" stroke-width="1.4"/><rect x="16" y="1" width="12" height="12" rx="2" fill="#C08A3E" stroke="#C08A3E" stroke-width="1.4"/><rect x="31" y="1" width="12" height="12" rx="2" fill="none" stroke="#C08A3E" stroke-width="1.4"/></svg><b><span class="ja">ふつう</span><span class="en">Normal</span></b><span class="v"><span class="ja">Normal</span><span class="en">ふつう</span></span></div>
+          <div class="opt"><svg width="44" height="14" viewBox="0 0 44 14" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2" fill="#C08A3E" stroke="#C08A3E" stroke-width="1.4"/><rect x="16" y="1" width="12" height="12" rx="2" fill="#C08A3E" stroke="#C08A3E" stroke-width="1.4"/><rect x="31" y="1" width="12" height="12" rx="2" fill="#C08A3E" stroke="#C08A3E" stroke-width="1.4"/></svg><b><span class="ja">多め</span><span class="en">More</span></b><span class="v"><span class="ja">More</span><span class="en">多め</span></span></div>
+        </div>
+        <p class="step-note"><span class="ja">甘さゼロもお選びいただけます。</span><span class="en">Zero sweetness is available.</span></p>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><span class="step-num">03</span><span class="step-t"><span class="ja">氷</span><span class="en">Ice</span><small>ICE</small></span></div>
+        <div class="opts c3">
+          <div class="opt"><svg width="44" height="16" viewBox="0 0 44 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1.5" transform="rotate(12 8 8)" fill="#7FB0BA" stroke="#7FB0BA" stroke-width="1.4"/><rect x="18" y="3" width="10" height="10" rx="1.5" transform="rotate(12 23 8)" fill="#7FB0BA" stroke="#7FB0BA" stroke-width="1.4"/><rect x="33" y="3" width="10" height="10" rx="1.5" transform="rotate(12 38 8)" fill="#7FB0BA" stroke="#7FB0BA" stroke-width="1.4"/></svg><b><span class="ja">多め</span><span class="en">Extra</span></b><span class="v"><span class="ja">Extra</span><span class="en">多め</span></span></div>
+          <div class="opt"><svg width="44" height="16" viewBox="0 0 44 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1.5" transform="rotate(12 8 8)" fill="#7FB0BA" stroke="#7FB0BA" stroke-width="1.4"/><rect x="18" y="3" width="10" height="10" rx="1.5" transform="rotate(12 23 8)" fill="#7FB0BA" stroke="#7FB0BA" stroke-width="1.4"/><rect x="33" y="3" width="10" height="10" rx="1.5" transform="rotate(12 38 8)" fill="none" stroke="#7FB0BA" stroke-width="1.4"/></svg><b><span class="ja">ふつう</span><span class="en">Regular</span></b><span class="v"><span class="ja">Regular</span><span class="en">ふつう</span></span></div>
+          <div class="opt"><svg width="44" height="16" viewBox="0 0 44 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="1.5" transform="rotate(12 8 8)" fill="#7FB0BA" stroke="#7FB0BA" stroke-width="1.4"/><rect x="18" y="3" width="10" height="10" rx="1.5" transform="rotate(12 23 8)" fill="none" stroke="#7FB0BA" stroke-width="1.4"/><rect x="33" y="3" width="10" height="10" rx="1.5" transform="rotate(12 38 8)" fill="none" stroke="#7FB0BA" stroke-width="1.4"/></svg><b><span class="ja">少なめ</span><span class="en">Less</span></b><span class="v"><span class="ja">Less</span><span class="en">少なめ</span></span></div>
+        </div>
+        <p class="step-note"><span class="ja">氷の量はICEDのドリンクで選べます。</span><span class="en">Ice level applies to ICED drinks.</span></p>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><span class="step-num">04</span><span class="step-t"><span class="ja">トッピング</span><span class="en">Toppings</span><small>TOPPINGS</small></span><span class="badge"><span class="ja">各＋100円</span><span class="en">+¥100 each</span></span></div>
+        <div class="opts c2">
+          <div class="topping"><img src="/assets/menu/shiratama.webp" alt="白玉" loading="lazy"><b><span class="ja">白玉</span><span class="en">Shiratama</span></b></div>
+          <div class="topping"><img src="/assets/menu/warabimochi.webp" alt="わらび餅" loading="lazy"><b><span class="ja">わらび餅</span><span class="en">Warabi Mochi</span></b></div>
+          <div class="topping"><img src="/assets/menu/kinako.webp" alt="きな粉" loading="lazy"><b><span class="ja">きな粉</span><span class="en">Kinako</span></b></div>
+          <div class="topping"><img src="/assets/menu/nata.webp" alt="ナタデココ" loading="lazy"><b><span class="ja">ナタデココ</span><span class="en">Nata de Coco</span></b></div>
+        </div>
+        <p class="step-note"><span class="ja">1杯につき3つまで。</span><span class="en">Up to 3 per drink.</span></p>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <section class="store" id="shop">
   <img src="/assets/storefront.webp" alt="TOKYO TEA CLUB 浅草店 外観イメージ" loading="lazy">
-  <div class="store-caption">浅草・ひさご通りの一角に。※完成イメージ</div>
+  <div class="store-caption"><span class="ja">浅草・ひさご通りの一角に。※完成イメージ</span><span class="en">On a corner of Hisago-dori, Asakusa. *Rendering</span></div>
 </section>
 <section class="shopinfo">
   <div class="wrap">
     <div class="sec-head">
-      <div class="en">SHOP</div>
-      <div class="jp">店舗情報</div>
+      <div class="t">SHOP</div>
+      <div class="s"><span class="ja">店舗情報</span><span class="en">Shop information</span></div>
     </div>
-    <dl class="spec">
-      <dt>店舗名</dt><dd>TOKYO TEA CLUB</dd>
-      <dt>所在地</dt><dd>東京都台東区浅草2-1-5 1階</dd>
-      <dt>アクセス</dt><dd>つくばエクスプレス浅草駅 徒歩3分／東京メトロ銀座線浅草駅 徒歩8分</dd>
-      <dt>業態</dt><dd>日本茶ドリンクスタンド（店内飲食・テイクアウト）</dd>
-      <dt>開業予定</dt><dd>2026年11月</dd>
-    </dl>
+    <div class="shop-grid">
+      <dl class="spec ja">
+        <dt>店舗名</dt><dd>TOKYO TEA CLUB 浅草店</dd>
+        <dt>所在地</dt><dd>〒111-0032<br>東京都台東区浅草2-1-5 1階</dd>
+        <dt>アクセス</dt><dd>つくばエクスプレス浅草駅 徒歩3分<br>東京メトロ銀座線浅草駅 徒歩8分</dd>
+        <dt>営業時間</dt><dd>10:00〜20:00（予定）</dd>
+        <dt>オープン</dt><dd>2026年11月7日（土）</dd>
+        <dt>業態</dt><dd>日本茶ドリンクスタンド（店内飲食・テイクアウト）</dd>
+        <dt>お支払い</dt><dd>現金・PayPay・Alipay+<br>クレジットカード等は順次対応します</dd>
+        <dt>最新情報</dt><dd>臨時休業やお知らせは<a href="https://www.instagram.com/tokyoteaclub_official/" target="_blank" rel="noopener">Instagram</a>でお伝えします</dd>
+      </dl>
+      <dl class="spec en">
+        <dt>Shop</dt><dd>TOKYO TEA CLUB Asakusa</dd>
+        <dt>Address</dt><dd>1F, 2-1-5 Asakusa, Taito-ku,<br>Tokyo 111-0032</dd>
+        <dt>Access</dt><dd>3 min walk from Asakusa Sta. (Tsukuba Express)<br>8 min walk from Asakusa Sta. (Tokyo Metro Ginza Line)</dd>
+        <dt>Hours</dt><dd>10:00–20:00 (planned)</dd>
+        <dt>Opening</dt><dd>Saturday, November 7, 2026</dd>
+        <dt>Style</dt><dd>Japanese tea drink stand (eat-in &amp; takeout)</dd>
+        <dt>Payment</dt><dd>Cash, PayPay, Alipay+<br>More payment options coming soon</dd>
+        <dt>News</dt><dd>Closures and updates are posted on <a href="https://www.instagram.com/tokyoteaclub_official/" target="_blank" rel="noopener">Instagram</a></dd>
+      </dl>
+      <div>
+        <div class="map">
+          <iframe src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E6%B5%85%E8%8D%892-1-5&amp;z=17&amp;output=embed" title="TOKYO TEA CLUB 浅草店の地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-link"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E6%B5%85%E8%8D%892-1-5" target="_blank" rel="noopener"><span class="ja">Googleマップで開く</span><span class="en">OPEN IN GOOGLE MAPS</span></a></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="follow">
   <div class="wrap">
-    <div class="sec-head" style="margin-bottom:0">
-      <div class="en">FOLLOW</div>
-      <div class="jp">オープンまでの日々を発信しています</div>
-    </div>
-    <div class="sns">
-      <a href="https://www.instagram.com/tokyoteaclub_official/" target="_blank" rel="noopener">INSTAGRAM</a>
-      <a href="https://www.tiktok.com/@tokyoteaclub_official" target="_blank" rel="noopener">TIKTOK</a>
-      <a href="https://x.com/tokyoteaclub_jp" target="_blank" rel="noopener">X</a>
+    <div class="follow-in">
+      <div class="sec-head" style="margin-bottom:0">
+        <div class="t">FOLLOW</div>
+        <div class="s"><span class="ja">オープンまでの日々を発信しています</span><span class="en">Follow us on the road to opening day</span></div>
+      </div>
+      <div class="sns">
+        <a href="https://www.instagram.com/tokyoteaclub_official/" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="https://www.tiktok.com/@tokyoteaclub_official" target="_blank" rel="noopener">TIKTOK</a>
+        <a href="https://x.com/tokyoteaclub_jp" target="_blank" rel="noopener">X</a>
+      </div>
     </div>
   </div>
 </section>
@@ -382,10 +897,49 @@
 </section>
 <!-- ===== ここまで ===== -->
 
+<nav class="sp-bar" aria-label="ショートカット">
+  <a href="#menu">MENU</a>
+  <a href="#order">ORDER</a>
+  <a href="#shop">ACCESS</a>
+</nav>
+
 <footer>
   <img src="/assets/logo-v-white.png" alt="TOKYO TEA CLUB">
   <small>&copy; 2026 TOKYO TEA CLUB / GENKO Inc.</small>
 </footer>
+
+<script>
+  // 言語の切り替え
+  document.querySelector('.lang').addEventListener('click', function(){
+    var l = document.documentElement.getAttribute('data-lang')==='en' ? 'ja' : 'en';
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+    try{ localStorage.setItem('ttc-lang', l); }catch(e){}
+  });
+  // メニューのカテゴリ: 表示中のカテゴリのボタンを塗る
+  (function(){
+    var links = [].slice.call(document.querySelectorAll(".cat-nav a"));
+    var cats = links.map(function(a){ return document.getElementById(a.getAttribute("href").slice(1)); });
+    var bar = document.querySelector(".cat-nav-in");
+    var cur = -1, ticking = false;
+    function update(){
+      ticking = false;
+      var i = -1;
+      cats.forEach(function(c, k){ if(c.getBoundingClientRect().top <= 140) i = k; });
+      if(i === cur) return;
+      if(cur >= 0) links[cur].classList.remove("on");
+      cur = i;
+      if(i < 0) return;
+      var a = links[i];
+      a.classList.add("on");
+      bar.scrollLeft = a.offsetLeft - (bar.clientWidth - a.offsetWidth) / 2;
+    }
+    window.addEventListener("scroll", function(){
+      if(!ticking){ ticking = true; requestAnimationFrame(update); }
+    }, {passive:true});
+    update();
+  })();
+</script>
 
 </body>
 </html>
