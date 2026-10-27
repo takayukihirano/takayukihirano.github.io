@@ -186,18 +186,22 @@
 
   /* ---- tall panels ---- */
   .panels{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 6px}
-  .panel{position:relative;overflow:hidden;background:var(--photo)}
+  .panel{position:relative;overflow:hidden}
   .panel img{width:100%;height:min(72vh,660px);object-fit:cover;transition:transform .8s ease}
   .panel:hover img{transform:scale(1.04)}
+  .panel::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom,rgba(0,0,0,0) 48%,rgba(0,0,0,.55));
+  }
   .panel-label{
     position:absolute;left:0;right:0;bottom:26px;z-index:2;
-    text-align:center;color:var(--ink);
+    text-align:center;color:#fff;
   }
   .panel-label .t{font-family:"Jost",sans-serif;font-size:15px;font-weight:500;letter-spacing:.3em;text-indent:.3em}
-  .panel-label .s{font-family:"Noto Sans JP",sans-serif;font-size:12px;font-weight:400;letter-spacing:.14em;margin-top:4px;color:var(--soft)}
+  .panel-label .s{font-family:"Noto Sans JP",sans-serif;font-size:12px;font-weight:300;letter-spacing:.14em;margin-top:4px;opacity:.9}
   @media (max-width:720px){
     .panels{grid-template-columns:1fr;gap:6px}
-    .panel img{height:auto;aspect-ratio:4/5}
+    .panel img{height:52vw;min-height:240px}
   }
 
   /* ---- section head ---- */
@@ -449,15 +453,15 @@
 
 <div class="panels">
   <div class="panel">
-    <img src="/assets/panel-matcha.webp" alt="抹茶ラテ" loading="lazy">
+    <img src="/assets/life-whisk.webp" alt="抹茶" loading="lazy">
     <div class="panel-label"><div class="t">MATCHA</div><div class="s"><span class="ja">抹茶を、作法から自由に</span><span class="en">Free from ceremony</span></div></div>
   </div>
   <div class="panel">
-    <img src="/assets/panel-kokuto.webp" alt="黒糖ほうじ茶ミルクティー" loading="lazy">
+    <img src="/assets/kokuto.webp" alt="黒糖ミルク" loading="lazy">
     <div class="panel-label"><div class="t">KOKUTOU</div><div class="s"><span class="ja">黒糖のコクを重ねて</span><span class="en">Layered with brown sugar</span></div></div>
   </div>
   <div class="panel">
-    <img src="/assets/panel-teatime.webp" alt="ほうじ茶ミルクティー" loading="lazy">
+    <img src="/assets/life-cheers.webp" alt="ほうじ茶ミルクティーで乾杯" loading="lazy">
     <div class="panel-label"><div class="t">TEA TIME</div><div class="s"><span class="ja">店内でも、テイクアウトでも</span><span class="en">For here or to go</span></div></div>
   </div>
 </div>
