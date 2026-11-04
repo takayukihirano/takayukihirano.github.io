@@ -320,6 +320,9 @@
   .topping{background:#fff;color:var(--ink);border-radius:4px;overflow:hidden;text-align:center}
   .topping img{width:100%;aspect-ratio:4/3;object-fit:cover}
   .topping b{display:block;font-family:"Noto Sans JP","Jost",sans-serif;font-size:12px;font-weight:500;padding:6px 2px 7px;line-height:1.3}
+  .topping.soon{position:relative}
+  .topping.soon::after{content:"COMING SOON";position:absolute;left:0;top:0;width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:rgba(70,89,76,.62);color:#fff;font-family:"Jost",sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;white-space:nowrap}
+  .topping.soon b{color:#888}
   .badge{
     display:inline-block;margin-left:auto;align-self:center;
     background:var(--gold);color:#fff;border-radius:3px;
@@ -792,7 +795,7 @@
       <div class="step">
         <div class="step-head"><span class="step-num">04</span><span class="step-t"><span class="ja">トッピング</span><span class="en">Toppings</span><small>TOPPINGS</small></span><span class="badge"><span class="ja">各＋100円</span><span class="en">+¥100 each</span></span></div>
         <div class="opts c2">
-          <div class="topping"><img src="/assets/menu/shiratama.webp" alt="白玉" loading="lazy"><b><span class="ja">白玉</span><span class="en">Shiratama</span></b></div>
+          <div class="topping soon"><img src="/assets/menu/shiratama.webp" alt="白玉" loading="lazy"><b><span class="ja">白玉</span><span class="en">Shiratama</span></b></div>
           <div class="topping"><img src="/assets/menu/warabimochi.webp" alt="わらび餅" loading="lazy"><b><span class="ja">わらび餅</span><span class="en">Warabi Mochi</span></b></div>
           <div class="topping"><img src="/assets/menu/kinako.webp" alt="きな粉" loading="lazy"><b><span class="ja">きな粉</span><span class="en">Kinako</span></b></div>
           <div class="topping"><img src="/assets/menu/nata.webp" alt="ナタデココ" loading="lazy"><b><span class="ja">ナタデココ</span><span class="en">Nata de Coco</span></b></div>
