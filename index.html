@@ -262,6 +262,9 @@
   @media (max-width:960px){.items{grid-template-columns:repeat(3,1fr)}}
   @media (max-width:640px){.items{grid-template-columns:repeat(2,1fr);gap:24px 14px}}
   .item .ph{background:var(--photo);border-radius:4px;overflow:hidden}
+  .item.soon .ph{position:relative}
+  .item.soon .ph::after{content:"COMING SOON";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(70,89,76,.62);color:#fff;font-family:"Jost",sans-serif;font-weight:600;font-size:clamp(12px,2.2vw,18px);letter-spacing:.12em;white-space:nowrap}
+  .item.soon h4,.item.soon .prices{opacity:.55}
   .item .ph img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .7s ease}
   .item:hover .ph img{transform:scale(1.04)}
   .tags{display:flex;gap:5px;margin-top:12px;min-height:19px}
@@ -723,14 +726,14 @@
         <p><span class="ja">個包装のまま、おひとつからどうぞ。</span><span class="en">Individually wrapped. Available by the piece.</span></p>
       </div>
       <ul class="items">
-        <li class="item">
+        <li class="item soon">
           <div class="ph"><img src="/assets/menu/financier.webp" alt="抹茶フィナンシェ" width="720" height="720" loading="lazy"></div>
           <div class="tags"></div>
           <h4><span class="ja">抹茶フィナンシェ</span><span class="en">Matcha Financier</span></h4>
           <div class="sub"><span class="ja">Matcha Financier</span><span class="en">抹茶フィナンシェ</span></div>
           <div class="prices"><span class="p">¥250</span></div>
         </li>
-        <li class="item">
+        <li class="item soon">
           <div class="ph"><img src="/assets/menu/cookie.webp" alt="抹茶チョコチップクッキー" width="720" height="720" loading="lazy"></div>
           <div class="tags"></div>
           <h4><span class="ja">抹茶チョコチップクッキー</span><span class="en">Matcha Chocolate Chip Cookie</span></h4>
