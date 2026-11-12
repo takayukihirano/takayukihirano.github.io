@@ -9,7 +9,7 @@
 <meta property="og:description" content="日本のお茶を、もっと自由に。浅草の日本茶ドリンクスタンド。浅草駅から徒歩3分、10:00〜19:00。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tokyoteaclub.jp/">
-<meta property="og:image" content="https://tokyoteaclub.jp/assets/hero.webp">
+<meta property="og:image" content="https://tokyoteaclub.jp/assets/shot/hero-exterior.webp">
 <meta property="og:site_name" content="TOKYO TEA CLUB">
 <link rel="icon" type="image/png" href="/logo-mark.png">
 <link rel="apple-touch-icon" href="/logo-mark.png">
@@ -22,7 +22,7 @@
   "@type": "CafeOrCoffeeShop",
   "name": "TOKYO TEA CLUB 浅草店",
   "url": "https://tokyoteaclub.jp/",
-  "image": "https://tokyoteaclub.jp/assets/storefront.webp",
+  "image": "https://tokyoteaclub.jp/assets/shot/hero-exterior.webp",
   "servesCuisine": "日本茶ドリンク",
   "hasMenu": "https://tokyoteaclub.jp/#menu",
   "priceRange": "¥450〜¥850",
@@ -142,7 +142,7 @@
 
   /* ---- hero ---- */
   .hero{position:relative;height:100svh;min-height:560px}
-  .hero > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%}
   .hero::after{
     content:"";position:absolute;inset:0;
     background:
@@ -168,6 +168,11 @@
     text-shadow:0 1px 12px rgba(0,0,0,.35);
   }
   .hero-inner .btn{margin-top:34px}
+  /* 外観ヒーロー: 看板がロゴなので重ねない */
+  .hero-nologo .hero-inner{justify-content:flex-end;padding-bottom:clamp(74px,13vh,130px)}
+  .hero-nologo .hero-inner > img{display:none}
+  .hero-nologo .hero-tag{margin-top:0;font-size:clamp(17px,2.9vw,24px);letter-spacing:.26em;text-indent:.26em}
+  .hero-nologo::after{background:linear-gradient(to bottom,rgba(0,0,0,.10),rgba(0,0,0,.02) 38%,rgba(0,0,0,.52))}
   .hero-scroll{
     position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
     color:#fff;font-family:"Jost",sans-serif;font-size:10px;letter-spacing:.3em;text-indent:.3em;
@@ -426,8 +431,8 @@
   </div>
 </nav>
 
-<header class="hero" id="top">
-  <img src="/assets/hero.webp" alt="浅草の街と抹茶ラテ" fetchpriority="high">
+<header class="hero hero-nologo" id="top">
+  <img src="/assets/shot/hero-exterior.webp" alt="TOKYO TEA CLUB 浅草店 外観" fetchpriority="high">
   <div class="hero-inner">
     <img src="/assets/logo-h-white.png" alt="TOKYO TEA CLUB">
     <div class="hero-tag"><span class="ja">日本のお茶を、もっと自由に。</span><span class="en">JAPANESE TEA, SET FREE.</span></div>
@@ -454,15 +459,15 @@
 
 <div class="panels">
   <div class="panel">
-    <img src="/assets/life-whisk.webp" alt="抹茶" loading="lazy">
+    <img src="/assets/shot/panel-matcha.webp" alt="抹茶ラテ" loading="lazy">
     <div class="panel-label"><div class="t">MATCHA</div><div class="s"><span class="ja">抹茶を、作法から自由に</span><span class="en">Free from ceremony</span></div></div>
   </div>
   <div class="panel">
-    <img src="/assets/kokuto.webp" alt="黒糖ほうじ茶ミルクティー" loading="lazy">
+    <img src="/assets/shot/panel-milktea.webp" alt="ミルクティー" loading="lazy">
     <div class="panel-label"><div class="t">KOKUTOU</div><div class="s"><span class="ja">黒糖のコクを重ねて</span><span class="en">Layered with brown sugar</span></div></div>
   </div>
   <div class="panel">
-    <img src="/assets/life-cheers.webp" alt="ストレートティーとミルクティーで乾杯" loading="lazy">
+    <img src="/assets/shot/panel-asakusa.webp" alt="浅草寺とTOKYO TEA CLUBのカップ" loading="lazy">
     <div class="panel-label"><div class="t">TEA TIME</div><div class="s"><span class="ja">店内でも、テイクアウトでも</span><span class="en">For here or to go</span></div></div>
   </div>
 </div>
@@ -779,8 +784,8 @@
 </section>
 
 <section class="store" id="shop">
-  <img src="/assets/storefront.webp" alt="TOKYO TEA CLUB 浅草店 外観イメージ" loading="lazy">
-  <div class="store-caption"><span class="ja">浅草寺のそば、伝法院通りから一本入った路地に。※完成イメージ</span><span class="en">On a lane just off Denboin-dori, by Senso-ji. *Rendering</span></div>
+  <img src="/assets/shot/exterior-alley.webp" alt="TOKYO TEA CLUB 浅草店 外観" loading="lazy">
+  <div class="store-caption"><span class="ja">浅草寺のそば、伝法院通りから一本入った路地に。</span><span class="en">On a lane just off Denboin-dori, by Senso-ji.</span></div>
 </section>
 <section class="shopinfo">
   <div class="wrap">
